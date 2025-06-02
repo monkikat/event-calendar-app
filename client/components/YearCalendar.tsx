@@ -64,7 +64,7 @@ const YearCalendar = ({
   }, [controls]);
 
   return (
-    <div className="overflow-auto flex flex-col w-full h-full justify-between text-sm lg:flex lg:flex-row lg:overflow-hidden lg:h-screen">
+    <div className="overflow-auto flex flex-col w-full h-full justify-between text-xs lg:flex lg:flex-row lg:overflow-hidden lg:h-screen sm:text-sm">
         <motion.div className="flex z-50 shrink-0 w-full justify-center items-center border-r-2 border-darkCustLight bg-beigeCust lg:w-2/3 lg:h-full"
           initial={{
             x: "-100vw"
@@ -80,10 +80,10 @@ const YearCalendar = ({
           }}>
           <div className="p-12 w-fit h-fit text-xs xl:text-sm">
             {/* Render each month */}
-            <div className="grid grid-cols-3 gap-1 p-4 text-textDark xl:p-2 xl:gap-4 md:grid-cols-4">
+            <div className="grid grid-cols-3 gap-1 p-2 text-textDark xl:gap-4 md:grid-cols-4">
               {calendarData.map((month) => (
                 <div key={month.name} className="p-2 transition-transform duration-300 hover:scale-105">
-                  <h2 className="font-semibold text-sm pb-2 hover:cursor-pointer"
+                  <h2 className="font-semibold text-xs pb-2 hover:cursor-pointer md:text-sm"
                   onClick={() => {
                     onMonthSelect(month.index);
                   }}

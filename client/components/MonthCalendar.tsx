@@ -29,9 +29,9 @@ const MonthCalendar = ({
 
 
   return (
-    <div className="flex flex-col h-full min-h-[100vh] w-full justify-between text-sm bg-beigeCust overflow-y-auto lg:flex lg:flex-row lg:overflow-y-hidden">
+    <div className="flex flex-col h-full min-h-[60vh] w-screen justify-between text-sm bg-beigeCust overflow-x-hidden overflow-y-auto lg:flex lg:flex-row lg:overflow-y-hidden">
       <div className="w-full flex justify-between items-center border-r-2 border-r-darkCustLight">
-        <div className='h-full flex py-12 px-12 hover:cursor-pointer'>
+        <div className='h-full flex py-12 px-4 hover:cursor-pointer'>
           <Image
             src={leftIcon}
             alt="Back"
@@ -41,7 +41,7 @@ const MonthCalendar = ({
             onClick={onBack}
           />
         </div>
-        <div className='w-full text-[14px] flex flex-col pl-12 pr-40 py-28 gap-y-8 lg:gap-y-12 lg:py-0'>
+        <div className='w-full text-[14px] flex flex-col px-18 py-28 gap-y-8 lg:gap-y-12 lg:py-0'>
           <h2 className='font-semibold text-3xl text-center'>
             {calendarData?.name}
           </h2>
