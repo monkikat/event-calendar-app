@@ -19,7 +19,7 @@ const Events = ({selectedDate,
     if (isExpanded) {
       setIsListVisible(false)
     }
-  }, [isExpanded]);
+  }, [isExpanded, setIsListVisible]);
   
   return (
     <div>

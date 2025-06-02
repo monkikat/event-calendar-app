@@ -23,7 +23,7 @@ const EventLists = ({ selectedDate,
         if (isDateSelected) {
           setIsUpcomingExpanded(false);
         }
-      }, [isDateSelected]);
+      }, [isDateSelected, setIsUpcomingExpanded]);
 
   return (
     <div className="flex flex-row w-full h-full text-sm bg-darkCust md:flex md:flex-col md:w-full">
