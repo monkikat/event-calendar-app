@@ -2,7 +2,7 @@ import Location from "./Location"
 import Image from 'next/image';
 
 import crossIcon from "../public/crossIcon.svg";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { motion } from "motion/react";
 
 const Events = ({selectedDate,

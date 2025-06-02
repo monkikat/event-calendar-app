@@ -1,10 +1,8 @@
 "use client";
 
-import Image from 'next/image';
 import { EventTM } from "@/types";
 import { useEffect, useState } from "react";
 
-import crossIcon from "../public/crossIcon.svg";
 
 const Location = ({ selectedDate } : { selectedDate: string}) => {
     const [location, setLocation] = useState<{ lat: number; lon: number } | null>(null);

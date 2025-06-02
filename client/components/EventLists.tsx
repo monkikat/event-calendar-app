@@ -1,13 +1,9 @@
 "use client";
 
-import { CalendarMonth, Day } from "@/types";
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react"
 import Events from "./Events";
 import UpcomingEvents from "./UpcomingEvents";
-import TitleCard from "./TitleCard";
 import { motion, useAnimation } from "motion/react";
-import titleImg from "../public/titleImg.svg"
-import Image from 'next/image';
 
 const EventLists = ({ selectedDate,
     isDateSelected,

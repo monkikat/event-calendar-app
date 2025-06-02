@@ -1,18 +1,9 @@
 "use client";
 
-import { YearCalendar, Location } from "@/components";
-import { useEffect, useMemo, useState } from "react";
+import { YearCalendar } from "@/components";
+import { useMemo, useState } from "react";
 import MonthCalendar from "./MonthCalendar";
 import { CalendarMonth, Day } from "@/types";
-import Footer from "./Footer";
-
-/*
-
-        <div className="w-1/4">
-          <Location selectedDate={selectedDate}/>
-        </div>
- */
-
 
 
 function generateMonthCalendarData(year: number, month: number): CalendarMonth {
@@ -58,7 +49,6 @@ const FullYearCalendar = () => {
   }, [selectedMonth, selectedYear]);
 
   const handleMonthSelect = (monthIndex: number) => {
-    const monthName = yearData[monthIndex].name;
     setSelectedMonth(monthIndex);
   };
 
@@ -74,7 +64,6 @@ const FullYearCalendar = () => {
         ) : (
           <MonthCalendar
             calendarData={monthData}
-            monthIndex={selectedMonth}
             onDateSelect={setSelectedDate}
             selectedDate={selectedDate}
             onBack={() => setSelectedMonth(null)}/>

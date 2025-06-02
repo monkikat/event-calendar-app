@@ -1,10 +1,7 @@
-    import { CalendarMonth } from '@/types';
+import { CalendarMonth } from '@/types';
 import { MouseEventHandler, useState } from 'react';
 import Image from 'next/image';
-import Events from './Events';
 import leftIcon from '../public/leftIcon.svg'
-import UpcomingEventsList from './UpcomingEventsList';
-import UpcomingEvents from './UpcomingEvents';
 import EventLists from './EventLists';
 
 //    onBack: MouseEventHandler<HTMLButtonElement>;
@@ -13,13 +10,11 @@ const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const MonthCalendar = ({
     calendarData,
-    monthIndex,
     onDateSelect,
     selectedDate,
     onBack
 } : {
     calendarData: CalendarMonth | null;
-    monthIndex: number;
     onDateSelect: (date: string) => void;
     selectedDate: string;
     onBack: MouseEventHandler<HTMLImageElement> | undefined;

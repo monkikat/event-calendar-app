@@ -1,4 +1,3 @@
-import TitleCard from "./TitleCard"
 import titleImg from "../public/titleImg.svg"
 import Image from 'next/image';
 

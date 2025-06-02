@@ -1,12 +1,9 @@
 "use client";
 
 import { FullYearCalendar } from "@/components";
-import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import { useEffect, useState } from "react";
-import titleImg from "../public/titleImg.svg"
-import Image from 'next/image';
-import { motion, useAnimation } from "motion/react";
+import { useAnimation } from "motion/react";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);

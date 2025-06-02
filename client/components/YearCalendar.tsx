@@ -1,10 +1,9 @@
 "use client"
 
-import { CalendarMonth, Day } from "@/types";
+import { CalendarMonth } from "@/types";
 import { useEffect, useState } from "react"
 import { motion, useAnimation } from "motion/react";
 import EventLists from "./EventLists";
-import YearCard from "./YearCard";
 import titleImg from "../public/titleImg.svg"
 import Image from 'next/image';
 
