@@ -7,12 +7,10 @@ import { motion } from "motion/react";
 
 const Events = ({selectedDate,
   isExpanded,
-  setIsExpanded, 
   isListVisible,
   setIsListVisible, 
 } : {selectedDate: string;
   isExpanded: boolean;
-  setIsExpanded: Dispatch<SetStateAction<boolean>>; 
   isListVisible: boolean;
   setIsListVisible: Dispatch<SetStateAction<boolean>>; 
 }) => {

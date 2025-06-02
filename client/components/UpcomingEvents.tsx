@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { Dispatch, SetStateAction } from "react"
 import Image from 'next/image';
 import UpcomingEventsList from "./UpcomingEventsList"
 import leftIcon from "../public/leftIcon.svg"

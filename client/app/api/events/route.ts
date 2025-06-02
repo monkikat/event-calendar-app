@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const TICKETMASTER_API_KEY = process.env.TICKETMASTER_API_KEY;
-
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const lat = searchParams.get("lat");

@@ -1,9 +1,9 @@
 "use client";
 
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react"
+import { Dispatch, SetStateAction, useEffect } from "react"
 import Events from "./Events";
 import UpcomingEvents from "./UpcomingEvents";
-import { motion, useAnimation } from "motion/react";
+import { motion } from "motion/react";
 
 const EventLists = ({ selectedDate,
     isDateSelected,
@@ -51,7 +51,6 @@ const EventLists = ({ selectedDate,
               <div className="z-50 bg-darkCust text-beigeCust text-xs xl:text-sm">
                 <Events selectedDate={selectedDate} 
                 isExpanded={isUpcomingExpanded}
-                setIsExpanded = {setIsUpcomingExpanded}
                 isListVisible={isListVisible}
                 setIsListVisible = {setIsListVisible}/>
               </div>
