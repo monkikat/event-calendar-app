@@ -24,7 +24,6 @@ const UpcomingEventsList = () => {
   const [events, setEvents] = useState<EventTM[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dateRange, setDateRange] = useState({ start: '', end: '' });
   
 
   useEffect(() => {
@@ -73,7 +72,6 @@ const UpcomingEventsList = () => {
           if (!isExpired && !locationChanged) {
             // Use cached data
             setEvents(cachedData.events);
-            setDateRange(cachedData.dateRange);
             shouldFetchFromAPI = false;
             console.log('Using cached events data');
           } else {
@@ -98,9 +96,7 @@ const UpcomingEventsList = () => {
         start: currentDate.toLocaleDateString(),
         end: endDate.toLocaleDateString()
       };
-      
-      setDateRange(newDateRange);
-      
+            
       const startDateTime = currentDate.toISOString().split('.')[0] + 'Z'; // Format: YYYY-MM-DDTHH:mm:ssZ
       const endDateTime = endDate.toISOString().split('.')[0] + 'Z';
       

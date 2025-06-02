@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
   const endDateTime = searchParams.get("endDateTime");
 
   if (!lat || !lon) {
-    return NextResponse.json({ error: "Missing parameters" }, { status: 400 });
+    return NextResponse.json( { status: 400 });
   }
 
   let url;
@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
     // Date range request
     url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${process.env.TICKETMASTER_API_KEY}&latlong=${lat},${lon}&radius=25&unit=miles&startDateTime=${startDateTime}&endDateTime=${endDateTime}`;
   } else {
-    return NextResponse.json({ error: "Missing date parameters" }, { status: 400 });
+    return NextResponse.json( { status: 400 });
   }
 
   try {
@@ -32,6 +32,6 @@ export async function GET(req: NextRequest) {
     const data = await res.json();
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch events" }, { status: 500 });
+    return NextResponse.json({ status: 500 });
   }
 }

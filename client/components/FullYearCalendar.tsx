@@ -40,7 +40,7 @@ function generateYearCalendarData(year: number): CalendarMonth[] {
 const FullYearCalendar = () => {
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null);
   const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split("T")[0]);
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [selectedYear] = useState(new Date().getFullYear());
 
   const yearData = useMemo(() => generateYearCalendarData(selectedYear), [selectedYear]);
   const monthData = useMemo(() => {
