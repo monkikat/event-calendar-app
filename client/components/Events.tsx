@@ -38,9 +38,7 @@ const Events = ({selectedDate,
                 transition={{ duration: 0.4 }}>
                 <div className="">Events for {
                                                 (() => {
-                                                  // Parse the date parts directly from the string to avoid timezone issues
                                                   const [year, month, day] = selectedDate.split('-').map(Number);
-                                                  // Create a date object with the local timezone
                                                   const date = new Date(year, month - 1, day);
                                                   return date.toLocaleDateString("en-US", {
                                                     month: "short",

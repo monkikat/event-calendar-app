@@ -7,14 +7,6 @@ import EventLists from "./EventLists";
 import titleImg from "../public/titleImg.svg"
 import Image from 'next/image';
 
-
-/* <div className="flex justify-between items-center mb-4">
-        <button onClick={() => setYear((prev) => prev - 1)}>← Previous</button>
-        <h1 className="">{year}</h1>
-        <button onClick={() => setYear((prev) => prev + 1)}>Next →</button>
-      </div>
- */
-
 const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
 const YearCalendar = ({ 
@@ -79,7 +71,6 @@ const YearCalendar = ({
             delay: 0.2
           }}>
           <div className="p-12 w-fit h-fit text-xs xl:text-sm">
-            {/* Render each month */}
             <div className="grid grid-cols-3 gap-1 p-2 text-textDark xl:gap-4 md:grid-cols-4">
               {calendarData.map((month) => (
                 <div key={month.name} className="p-2 transition-transform duration-300 hover:scale-105">
@@ -89,18 +80,15 @@ const YearCalendar = ({
                   }}
                   >{month.name}</h2>
 
-                  {/* Weekday labels */}
                   <div className="grid grid-cols-7 gap-1 text-center">
                     {WEEKDAYS.map((day) => (
                       <div key={day} className="text-darkCustLight">{day}</div>
                     ))}
 
-                    {/* Add empty placeholders to align first day correctly */}
                     {Array(month.days[0].dayOfWeek).fill(null).map((_, idx) => (
                       <div key={`empty-${idx}`}></div>
                     ))}
 
-                    {/* Render the actual days */}
                     {month.days.map((day) => (
                       <div key={day.fullDate}
                       onClick={() => {

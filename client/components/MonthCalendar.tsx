@@ -46,12 +46,10 @@ const MonthCalendar = ({
               <div key={day} className="text-darkCustLight text-lg p-4">{day}</div>
             ))}
 
-            {/* Add empty placeholders to align first day correctly */}
             {Array(calendarData?.days[0].dayOfWeek).fill(null).map((_, idx) => (
               <div key={`empty-${idx}`}></div>
             ))}
 
-            {/* Render the actual days */}
             {calendarData?.days.map((day) => (
               <div key={day.fullDate}
               className={`px-8 py-4 hover:cursor-pointer hover:text-amber-500 ${day.fullDate === selectedDate ? 'text-amber-500' : ''}  ${day.fullDate === currentDate ? 'bg-amber-500 rounded-full p-1 text-darkCust hover:text-darkCust' : ''}`}

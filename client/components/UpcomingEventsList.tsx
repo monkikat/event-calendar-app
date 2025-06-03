@@ -4,7 +4,6 @@ import { EventTM } from '@/types';
 import { motion } from 'motion/react';
 import React, { useEffect, useState } from 'react'
 
-// Type for cached events data
 interface CachedEventsData {
   events: EventTM[];
   timestamp: number;
@@ -12,10 +11,8 @@ interface CachedEventsData {
   dateRange: { start: string; end: string };
 }
 
-// Cache expiration time in milliseconds (10 minutes)
 const CACHE_EXPIRATION = 10 * 60 * 1000;
 
-// Local storage key
 const EVENTS_CACHE_KEY = 'upcomingEventsCache';
 
 
@@ -43,9 +40,7 @@ const UpcomingEventsList = () => {
     );
   }, []);
 
-  // Function to check if location has changed significantly
   const hasLocationChanged = (cachedLocation: { lat: number; lon: number }, currentLocation: { lat: number; lon: number }) => {
-    // Check if location has changed by more than 0.01 degrees (roughly 1km)
     const latDiff = Math.abs(cachedLocation.lat - currentLocation.lat);
     const lonDiff = Math.abs(cachedLocation.lon - currentLocation.lon);
     return latDiff > 0.01 || lonDiff > 0.01;
@@ -55,7 +50,6 @@ const UpcomingEventsList = () => {
     const fetchEvents = async () => {
       if (!location) return;
       
-      // Try to get cached data from localStorage
       let shouldFetchFromAPI = true;
       let cachedData: CachedEventsData | null = null;
       
@@ -64,13 +58,11 @@ const UpcomingEventsList = () => {
         if (cachedString) {
           cachedData = JSON.parse(cachedString) as CachedEventsData;
           
-          // Check if cache is still valid
           const now = Date.now();
           const isExpired = now - cachedData.timestamp > CACHE_EXPIRATION;
           const locationChanged = hasLocationChanged(cachedData.location, location);
           
           if (!isExpired && !locationChanged) {
-            // Use cached data
             setEvents(cachedData.events);
             shouldFetchFromAPI = false;
             console.log('Using cached events data');
@@ -80,7 +72,6 @@ const UpcomingEventsList = () => {
         }
       } catch (error) {
         console.error('Error reading from cache:', error);
-        // If there's an error reading the cache, we'll fetch from API
       }
       
       if (!shouldFetchFromAPI) return;
@@ -97,11 +88,10 @@ const UpcomingEventsList = () => {
         end: endDate.toLocaleDateString()
       };
             
-      const startDateTime = currentDate.toISOString().split('.')[0] + 'Z'; // Format: YYYY-MM-DDTHH:mm:ssZ
+      const startDateTime = currentDate.toISOString().split('.')[0] + 'Z';
       const endDateTime = endDate.toISOString().split('.')[0] + 'Z';
       
       try {
-        // Make a single API call with date range
         const res = await fetch(
           `/api/events?lat=${location.lat}&lon=${location.lon}&startDateTime=${startDateTime}&endDateTime=${endDateTime}`
         );
@@ -114,7 +104,6 @@ const UpcomingEventsList = () => {
         const fetchedEvents = data._embedded?.events || [];
         setEvents(fetchedEvents);
         
-        // Save to localStorage with current timestamp
         const cacheData: CachedEventsData = {
           events: fetchedEvents,
           timestamp: Date.now(),
@@ -135,7 +124,7 @@ const UpcomingEventsList = () => {
     };
   
     fetchEvents();
-  }, [location]); // Re-run when location changes
+  }, [location]);
 
   return (
     <motion.div className="px-12"
@@ -180,9 +169,7 @@ const UpcomingEventsList = () => {
                     {event.dates.start.localTime && (
                       <span>
                         {(() => {
-                          // Parse the time parts directly from the string
                           const [hours, minutes] = event.dates.start.localTime.split(':').map(Number);
-                          // Create a date object with the local timezone
                           const date = new Date();
                           date.setHours(hours);
                           date.setMinutes(minutes);
@@ -197,9 +184,7 @@ const UpcomingEventsList = () => {
                     {event.dates.start.localDate && (
                       <span className='text-darkCustLight font-semibold'>
                         {(() => {
-                          // Parse the date parts directly from the string to avoid timezone issues
                           const [year, month, day] = event.dates.start.localDate.split('-').map(Number);
-                          // Create a date object with the local timezone
                           const date = new Date(year, month - 1, day);
                           return date.toLocaleDateString("en-US", {
                             month: "short",

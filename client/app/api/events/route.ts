@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
   
   if (date) {
     const dateObj = new Date(date);
-    dateObj.setDate(dateObj.getDate() + 1); // Add 2 days to compensate for the issue
+    dateObj.setDate(dateObj.getDate() + 1);
     const adjustedDate = dateObj.toISOString().split('T')[0];
     
     const startDate = `${adjustedDate}T00:00:00Z`;

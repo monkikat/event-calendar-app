@@ -55,9 +55,7 @@ const Location = ({ selectedDate } : { selectedDate: string}) => {
                                 {event.dates.start.localTime && (
                                 <span>
                                     {(() => {
-                                      // Parse the time parts directly from the string
                                       const [hours, minutes] = event.dates.start.localTime.split(':').map(Number);
-                                      // Create a date object with the local timezone
                                       const date = new Date();
                                       date.setHours(hours);
                                       date.setMinutes(minutes);
@@ -72,9 +70,7 @@ const Location = ({ selectedDate } : { selectedDate: string}) => {
                                 {event.dates.start.localDate && (
                                 <span className='text-darkCustLight font-semibold'>
                                     {(() => {
-                                      // Parse the date parts directly from the string to avoid timezone issues
                                       const [year, month, day] = event.dates.start.localDate.split('-').map(Number);
-                                      // Create a date object with the local timezone
                                       const date = new Date(year, month - 1, day);
                                       return date.toLocaleDateString("en-US", {
                                         month: "short",
@@ -97,23 +93,3 @@ const Location = ({ selectedDate } : { selectedDate: string}) => {
 
 export default Location
 
-/*
-<div className="h-full overflow-y-auto">
-    <div>Selected Date = {selectedDate}</div>
-    <div>Location = {location ? `${location.lat}, ${location.lon}` : 'Not available'}</div>
-    <h1>Events for {selectedDate}</h1>
-    {events.length === 0 ? (
-        <p>No events found.</p>
-    ) : (
-        <ul>
-        {events.map((event) => (
-            <li key={event.id}>
-            <a href={event.url} target="_blank" rel="noopener noreferrer">
-                {event.name} - {event.dates.start.localDate}
-            </a>
-            </li>
-        ))}
-        </ul>
-    )}
-</div>
-*/
