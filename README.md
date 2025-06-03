@@ -19,7 +19,7 @@ A full-year interactive calendar built with **Next.js**, **TypeScript**, and **T
 
 ## 🖼️ Preview
 
-![Calendar Demo](public/demo-preview.png) <!-- Replace with actual preview if available -->
+![client/public/EventCalendarGif.gif](https://github.com/monkikat/event-calendar-app/blob/main/client/public/EventCalendarGif.gif)
 
 ## 📦 To Run
 
