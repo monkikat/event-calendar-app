@@ -179,22 +179,34 @@ const UpcomingEventsList = () => {
                   <div className="flex flex-col text-sm">
                     {event.dates.start.localTime && (
                       <span>
-                        {new Date(
-                          `${event.dates.start.localDate}T${event.dates.start.localTime}`
-                        ).toLocaleTimeString("en-US", {
-                          hour: "numeric",
-                          minute: "2-digit",
-                          hour12: true,
-                        })}
+                        {(() => {
+                          // Parse the time parts directly from the string
+                          const [hours, minutes] = event.dates.start.localTime.split(':').map(Number);
+                          // Create a date object with the local timezone
+                          const date = new Date();
+                          date.setHours(hours);
+                          date.setMinutes(minutes);
+                          return date.toLocaleTimeString("en-US", {
+                            hour: "numeric",
+                            minute: "2-digit",
+                            hour12: true,
+                          });
+                        })()}
                       </span>
                     )}
                     {event.dates.start.localDate && (
                       <span className='text-darkCustLight font-semibold'>
-                        {new Date(event.dates.start.localDate).toLocaleDateString("en-US", {
-                          month: "short",
-                          day: "numeric",
-                          year: "numeric",
-                        })}
+                        {(() => {
+                          // Parse the date parts directly from the string to avoid timezone issues
+                          const [year, month, day] = event.dates.start.localDate.split('-').map(Number);
+                          // Create a date object with the local timezone
+                          const date = new Date(year, month - 1, day);
+                          return date.toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          });
+                        })()}
                       </span>
                     )}
                   </div>

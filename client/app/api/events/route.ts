@@ -14,14 +14,18 @@ export async function GET(req: NextRequest) {
 
   let url;
   
-  // Handle both single date and date range requests
   if (date) {
-    // Single date request
-    const startDate = `${date}T00:00:00Z`;
-    const endDate = `${date}T23:59:59Z`;
+    const dateObj = new Date(date);
+    dateObj.setDate(dateObj.getDate() + 1); // Add 2 days to compensate for the issue
+    const adjustedDate = dateObj.toISOString().split('T')[0];
+    
+    const startDate = `${adjustedDate}T00:00:00Z`;
+    const endDate = `${adjustedDate}T23:59:59Z`;
+    
+    console.log(`Original date: ${date}, Adjusted date: ${adjustedDate}`);
+    
     url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${process.env.TICKETMASTER_API_KEY}&latlong=${lat},${lon}&radius=25&unit=miles&startDateTime=${startDate}&endDateTime=${endDate}`;
   } else if (startDateTime && endDateTime) {
-    // Date range request
     url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${process.env.TICKETMASTER_API_KEY}&latlong=${lat},${lon}&radius=25&unit=miles&startDateTime=${startDateTime}&endDateTime=${endDateTime}`;
   } else {
     return NextResponse.json( { status: 400 });

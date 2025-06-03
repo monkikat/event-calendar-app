@@ -4,8 +4,6 @@ import Image from 'next/image';
 import leftIcon from '../public/leftIcon.svg'
 import EventLists from './EventLists';
 
-//    onBack: MouseEventHandler<HTMLButtonElement>;
-
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const MonthCalendar = ({
@@ -25,8 +23,6 @@ const MonthCalendar = ({
   const currentDate = new Date().toISOString().split("T")[0];
 
   const [isUpcomingExpanded, setIsUpcomingExpanded] = useState<boolean>(true);
-
-
 
   return (
     <div className="flex flex-col h-full min-h-[60vh] w-screen justify-between text-sm bg-beigeCust overflow-x-hidden overflow-y-auto lg:flex lg:flex-row lg:overflow-y-hidden">
